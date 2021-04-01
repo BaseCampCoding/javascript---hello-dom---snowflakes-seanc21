@@ -18,14 +18,19 @@ quantity.addEventListener("change", () => {
   switch (quantity.value) {
     case "0":
       quantityAmount = 500;
+      break;
     case "1":
       quantityAmount = 250;
+      break;
     case "2":
       quantityAmount = 100;
+      break;
     case "3":
       quantityAmount = 50;
+      break;
     case "4":
       quantityAmount = 0;
+      break;
   }
   clearInterval(time)
   time = setInterval(() => createSnowflake(), quantityAmount);
@@ -50,12 +55,13 @@ function createSnowflake() {
   snowFlake.style.left = randint(0, 100) + "%";
   snowFlake.style.opacity = Math.random();
   snowFlake.style.fontSize = randint(MIN_SIZE, MAX_SIZE) + "px";
+  snowFlake.style.color = clickColor.value;
 
   snowflakesContainer.appendChild(snowFlake);
 
   snowFlake
     .animate(
-      { transform: `translate(0vw, 100vh)` },
+      { transform: `translate(${wind.value}vw, 100vh)` },
       { duration: randint(MIN_DURATION, MAX_DURATION) }
     )
     .finished.then(() => snowFlake.remove());
